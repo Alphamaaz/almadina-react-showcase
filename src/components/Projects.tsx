@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import projectVilla from "@/assets/project-villa.jpg";
 import projectPlaza from "@/assets/project-plaza.jpg";
 import projectHome from "@/assets/project-home.jpg";
@@ -73,12 +75,25 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Projects</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-            A showcase of our commitment to excellence and quality craftsmanship
-            across various sectors.
-          </p>
+        <div className="mb-12">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+            <div className="text-center md:text-left mb-4 md:mb-0">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Projects</h2>
+              <p className="text-lg text-muted-foreground max-w-3xl">
+                A showcase of our commitment to excellence and quality craftsmanship
+                across various sectors.
+              </p>
+            </div>
+            <Link to="/projects">
+              <Button
+                variant="outline"
+                className="group gap-2 hover:bg-primary hover:text-primary-foreground hover:border-primary"
+              >
+                View All
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </div>
 
           {/* Filters */}
           <div className="flex flex-wrap justify-center gap-3">

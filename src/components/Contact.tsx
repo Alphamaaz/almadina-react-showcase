@@ -1,17 +1,7 @@
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
 import { Card, CardContent } from "./ui/card";
-import { toast } from "sonner";
 
 const Contact = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    toast.success("Thank you! We'll get back to you soon.");
-    (e.target as HTMLFormElement).reset();
-  };
-
   const contactInfo = [
     {
       icon: MapPin,
@@ -48,7 +38,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Contact Information */}
           <div className="space-y-6">
             <h3 className="text-2xl font-bold mb-6">Contact Details</h3>
@@ -79,73 +69,26 @@ const Contact = () => {
             })}
           </div>
 
-          {/* Contact Form */}
+          {/* Map Section */}
           <div>
-            <Card className="border-border">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6">Send us a Message</h3>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <Input
-                      type="text"
-                      placeholder="Your Name"
-                      required
-                      className="w-full"
-                    />
-                  </div>
-                  <div>
-                    <Input
-                      type="email"
-                      placeholder="Your Email"
-                      required
-                      className="w-full"
-                    />
-                  </div>
-                  <div>
-                    <Input
-                      type="tel"
-                      placeholder="Phone Number"
-                      className="w-full"
-                    />
-                  </div>
-                  <div>
-                    <Textarea
-                      placeholder="Your Message"
-                      required
-                      className="w-full min-h-32"
-                    />
-                  </div>
-                  <Button
-                    type="submit"
-                    className="w-full bg-primary hover:bg-primary/90"
-                  >
-                    Send Message
-                  </Button>
-                </form>
+            <Card className="border-border overflow-hidden h-full">
+              <CardContent className="p-0 h-full">
+                <div className="w-full h-full min-h-[400px]">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.4825847662845!2d71.44626307565744!3d34.01561571942073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d917b90f0e2d85%3A0x2b3f4e5e5e5e5e5e!2sWarsak%20Road%2C%20Peshawar%2C%20Khyber%20Pakhtunkhwa%2C%20Pakistan!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Al-Madina Constructions Location"
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
               </CardContent>
             </Card>
           </div>
-        </div>
-
-        {/* Map Section */}
-        <div className="mt-16 max-w-6xl mx-auto">
-          <Card className="border-border overflow-hidden">
-            <CardContent className="p-0">
-              <div className="aspect-video w-full">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.4825847662845!2d71.44626307565744!3d34.01561571942073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d917b90f0e2d85%3A0x2b3f4e5e5e5e5e5e!2sWarsak%20Road%2C%20Peshawar%2C%20Khyber%20Pakhtunkhwa%2C%20Pakistan!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Al-Madina Constructions Location"
-                  className="w-full h-full"
-                ></iframe>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </section>

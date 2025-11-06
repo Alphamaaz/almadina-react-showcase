@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
+import QuoteDialog from "./QuoteDialog";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -67,12 +68,11 @@ const Header = () => {
                 {item.label}
               </a>
             ))}
-            <Button
-              onClick={() => scrollToSection("#contact")}
-              className="bg-primary hover:bg-primary/90"
-            >
-              Get Quote
-            </Button>
+            <QuoteDialog>
+              <Button className="bg-primary hover:bg-primary/90">
+                Get Quote
+              </Button>
+            </QuoteDialog>
           </div>
 
           {/* Mobile Menu Button */}
@@ -86,7 +86,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top bg-background/95 backdrop-blur-md p-4 rounded-lg">
+          <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top bg-primary p-4 rounded-lg">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -95,17 +95,16 @@ const Header = () => {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
-                className="block text-sm font-medium text-white hover:text-primary transition-colors"
+                className="block text-sm font-medium text-white hover:text-white/80 transition-colors"
               >
                 {item.label}
               </a>
             ))}
-            <Button
-              onClick={() => scrollToSection("#contact")}
-              className="w-full bg-primary hover:bg-primary/90"
-            >
-              Get Quote
-            </Button>
+            <QuoteDialog>
+              <Button className="w-full bg-white text-primary hover:bg-white/90">
+                Get Quote
+              </Button>
+            </QuoteDialog>
           </div>
         )}
       </nav>
