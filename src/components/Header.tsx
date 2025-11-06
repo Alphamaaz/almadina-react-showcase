@@ -86,7 +86,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top">
+          <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top bg-background/95 backdrop-blur-md p-4 rounded-lg">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -95,7 +95,7 @@ const Header = () => {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
-                className="block text-sm font-medium text-foreground hover:text-primary transition-colors"
+                className="block text-sm font-medium text-white hover:text-primary transition-colors"
               >
                 {item.label}
               </a>

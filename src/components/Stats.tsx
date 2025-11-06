@@ -1,26 +1,81 @@
 import { Award, Users, CheckCircle } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const Stats = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [counts, setCounts] = useState({ years: 0, team: 0, projects: 0 });
+  const sectionRef = useRef<HTMLElement>(null);
+
   const stats = [
     {
       icon: Award,
-      value: "6+",
+      value: 6,
       label: "Years of Experience",
+      key: "years" as const,
     },
     {
       icon: Users,
-      value: "6+",
+      value: 6,
       label: "Skilled Team Members",
+      key: "team" as const,
     },
     {
       icon: CheckCircle,
-      value: "6+",
+      value: 6,
       label: "Projects Completed",
+      key: "projects" as const,
     },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const duration = 2000;
+    const steps = 60;
+    const stepDuration = duration / steps;
+
+    stats.forEach((stat) => {
+      let currentStep = 0;
+      const interval = setInterval(() => {
+        currentStep++;
+        const progress = currentStep / steps;
+        const currentValue = Math.floor(progress * stat.value);
+
+        setCounts((prev) => ({
+          ...prev,
+          [stat.key]: currentValue,
+        }));
+
+        if (currentStep >= steps) {
+          clearInterval(interval);
+          setCounts((prev) => ({
+            ...prev,
+            [stat.key]: stat.value,
+          }));
+        }
+      }, stepDuration);
+    });
+  }, [isVisible]);
+
   return (
-    <section className="py-20 bg-secondary text-white relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 bg-secondary text-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -49,7 +104,7 @@ const Stats = () => {
                   <Icon className="w-8 h-8 text-primary" />
                 </div>
                 <div className="text-5xl font-bold text-primary mb-2">
-                  {stat.value}
+                  {counts[stat.key]}+
                 </div>
                 <div className="text-lg text-white/90">{stat.label}</div>
               </div>
