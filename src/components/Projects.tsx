@@ -2,13 +2,86 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import projectVilla from "@/assets/project-villa.jpg";
-import projectPlaza from "@/assets/project-plaza.jpg";
-import projectHome from "@/assets/project-home.jpg";
-import projectMall from "@/assets/project-mall.jpg";
-import projectApartments from "@/assets/project-apartments.jpg";
-import projectOffice from "@/assets/project-office.jpg";
+import { ArrowRight, X } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "./ui/dialog";
+import house1 from "@/assets/1.jpg";
+import house2 from "@/assets/2.jpg";
+import house6 from "@/assets/6.jpg";
+import house7 from "@/assets/7.jpg";
+import house8 from "@/assets/8.jpg";
+import house10 from "@/assets/10.jpg";
+import house11 from "@/assets/11.jpg";
+import house15 from "@/assets/15.jpg";
+import house16 from "@/assets/16.jpg";
+import house17 from "@/assets/17.jpg";
+import house18 from "@/assets/18.jpg";
+import house19 from "@/assets/19.jpg";
+import house22 from "@/assets/22.jpg";
+import house26 from "@/assets/26.jpg";
+import house27 from "@/assets/27.jpg";
+import house28 from "@/assets/28.jpg";
+import house29 from "@/assets/29.jpg";
+import house30 from "@/assets/30.jpg";
+import house32 from "@/assets/32.jpg";
+import house33 from "@/assets/33.jpg";
+import house34 from "@/assets/34.jpg";
+import house35 from "@/assets/35.jpg";
+import house36 from "@/assets/36.jpg";
+import house37 from "@/assets/37.jpg";
+import house38 from "@/assets/38.jpg";
+import house40 from "@/assets/40.jpg";
+import house46 from "@/assets/46.jpg";
+import house50 from "@/assets/50.jpg";
+import house52 from "@/assets/52.jpg";
+import house53 from "@/assets/53.jpg";
+import house54 from "@/assets/54.jpg";
+import house55 from "@/assets/55.jpg";
+import house56 from "@/assets/56.jpg";
+import house57 from "@/assets/57.jpg";
+import house58 from "@/assets/58.jpg";
+import house59 from "@/assets/59.jpg";
+import house60 from "@/assets/60.jpg";
+import house63 from "@/assets/63.jpg";
+import house64 from "@/assets/64.jpg";
+import house65 from "@/assets/65.jpg";
+import house66 from "@/assets/66.jpg";
+import house67 from "@/assets/67.jpg";
+import house69 from "@/assets/69.jpg";
+import house70 from "@/assets/70.jpg";
+import house71 from "@/assets/71.jpg";
+import house73 from "@/assets/73.jpg";
+import house77 from "@/assets/77.jpg";
+import house78 from "@/assets/78.jpg";
+import house79 from "@/assets/79.jpg";
+import house80 from "@/assets/80.jpg";
+import house81 from "@/assets/81.jpg";
+import house82 from "@/assets/82.jpg";
+import house83 from "@/assets/83.jpg";
+import house84 from "@/assets/84.jpg";
+import house85 from "@/assets/85.jpg";
+import house86 from "@/assets/86.jpg";
+import house87 from "@/assets/87.jpg";
+import house88 from "@/assets/88.jpg";
+import house89 from "@/assets/89.jpg";
+import house90 from "@/assets/90.jpg";
+import house91 from "@/assets/91.jpg";
+import house92 from "@/assets/92.jpg";
+import house111 from "@/assets/111.jpg";
+import house112 from "@/assets/112.jpg";
+import commercial5 from "@/assets/C5.jpg";
+import commercialBilal from "@/assets/Cbilal.jpg";
+import commercial3 from "@/assets/C3.png";
+import commercial2 from "@/assets/C2.jpg";
+import commercial1 from "@/assets/C1.jpg";
+import mosque1 from "@/assets/M1.jpg";
+import mosque2 from "@/assets/M2.jpg";
+
+
 
 type ProjectCategory = "all" | "residential" | "commercial" | "mosques";
 
@@ -18,10 +91,69 @@ interface ProjectsProps {
 
 const Projects = ({ limitProjects = true }: ProjectsProps) => {
   const [activeFilter, setActiveFilter] = useState<ProjectCategory>("all");
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const projects = [
+
+
     {
-      image: "1",
+      image: commercial5,
+      title: "4 Marla",
+      location: "Khusal Bagh, Peshawar",
+      description: "A luxury residential project",
+      category: "commercial" as const,
+      year: 2009,
+    },
+    {
+      image: commercialBilal,
+      title: "5 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "commercial" as const,
+      year: 2014,
+    },
+    {
+      image: commercial3,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "commercial" as const,
+      year: 2014,
+    },
+    {
+      image: commercial2,
+      title: "7 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "commercial" as const,
+      year: 2015,
+    },
+    {
+      image: commercial1,
+      title: "7 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "commercial" as const,
+      year: 2015,
+    },
+    {
+      image: mosque1,
+      title: "7 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "mosques" as const,
+      year: 2015,
+    },
+    {
+      image: mosque2,
+      title: "7 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "mosques" as const,
+      year: 2015,
+    },
+    {
+      image: house1,
       title: "5 Marla",
       location: "Sabz Ali Town, Peshawar",
       description: "A luxury residential project",
@@ -29,7 +161,7 @@ const Projects = ({ limitProjects = true }: ProjectsProps) => {
       year: 2008,
     },
     {
-      image: "2",
+      image: house2,
       title: "4 Marla",
       location: "Sabz Ali Town, Peshawar",
       description: "A luxury residential project",
@@ -37,15 +169,15 @@ const Projects = ({ limitProjects = true }: ProjectsProps) => {
       year: 2008,
     },
     {
-      image: "3",
+      image: house6,
       title: "4 Marla",
       location: "Sabz Ali Town, Peshawar",
       description: "A luxury residential project",
-      category: "mosques" as const,
+      category: "residential" as const,
       year: 2008,
     },
     {
-      image: "4",
+      image: house7,
       title: "8 Marla",
       location: "Khwaja Town, Peshawar",
       description: "A luxury residential project",
@@ -53,23 +185,7 @@ const Projects = ({ limitProjects = true }: ProjectsProps) => {
       year: 2008,
     },
     {
-      image: "5",
-      title: "6 Marla",
-      location: "Wazir Colony, Peshawar",
-      description: "A luxury residential project",
-      category: "residential" as const,
-      year: 2009,
-    },
-    {
-      image: "6",
-      title: "4 Marla",
-      location: "Khusal Bagh, Peshawar",
-      description: "A luxury residential project",
-      category: "residential" as const,
-      year: 2009,
-    },
-    {
-      image: "7",
+      image: house8,
       title: "6 Marla",
       location: "Sabz Ali Town, Peshawar",
       description: "A luxury residential project",
@@ -77,173 +193,479 @@ const Projects = ({ limitProjects = true }: ProjectsProps) => {
       year: 2009,
     },
     {
-      image: "8",
-      title: "5 Kanal",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "commercial" as const,
-      year: 2009,
-    },
-    {
-      image: "10",
-      title: "5 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "mosque" as const,
-      year: 2009,
-    },
-    {
-      image: "13",
-      title: "4 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "residential" as const,
-      year: 2010,
-    },
-    {
-      image: "15",
-      title: "3 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "residential" as const,
-      year: 2010,
-    },
-    {
-      image: "17",
-      title: "8 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "residential" as const,
-      year: 2010,
-    },
-    {
-      image: "18",
+      image: house10,
       title: "6 Marla",
       location: "Sabz Ali Town, Peshawar",
       description: "A luxury residential project",
-      category: "commercial" as const,
-      year: 2011,
-    },
-    {
-      image: "19",
-      title: "5 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
       category: "residential" as const,
-      year: 2011,
+      year: 2009,
     },
     {
-      image: "23",
-      title: "3 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "mosque" as const,
-      year: 2011,
-    },
-    {
-      image: "25",
-      title: "4 Kanal",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "commercial" as const,
-      year: 2011,
-    },
-    {
-      image: "26",
-      title: "5 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "residential" as const,
-      year: 2011,
-    },
-    {
-      image: "28",
-      title: "5 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "residential" as const,
-      year: 2012,
-    },
-    {
-      image: "32",
-      title: "5 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "commercial" as const,
-      year: 2012,
-    },
-    {
-      image: "35",
-      title: "5 Kanal",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "residential" as const,
-      year: 2012,
-    },
-    {
-      image: "36",
-      title: "3 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "mosque" as const,
-      year: 2013,
-    },
-    {
-      image: "40",
-      title: "5 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "mosque" as const,
-      year: 2013,
-    },
-    {
-      image: "46",
-      title: "5 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "mosque" as const,
-      year: 2013,
-    },
-    {
-      image: "51",
-      title: "5 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "mosque" as const,
-      year: 2013,
-    },
-    {
-      image: "52",
-      title: "20 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "mosque" as const,
-      year: 2014,
-    },
-    {
-      image: "53",
-      title: "5 Marla",
-      location: "Sabz Ali Town, Peshawar",
-      description: "A luxury residential project",
-      category: "mosque" as const,
-      year: 2014,
-    },
-    {
-      image: "55",
+      image: house11,
       title: "6 Marla",
       location: "Sabz Ali Town, Peshawar",
       description: "A luxury residential project",
-      category: "mosque" as const,
-      year: 2014,
+      category: "residential" as const,
+      year: 2009,
     },
     {
-      image: "56",
-      title: "7 Marla",
+      image: house15,
+      title: "6 Marla",
       location: "Sabz Ali Town, Peshawar",
       description: "A luxury residential project",
-      category: "mosque" as const,
-      year: 2015,
+      category: "residential" as const,
+      year: 2009,
     },
+    {
+      image: house16,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house17,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house18,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house19,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house22,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house26,
+      title: "5 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2008,
+    },
+
+    {
+      image: house27,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house28,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house29,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house30,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house32,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house33,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house34,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house35,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house36,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house37,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house38,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house40,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house46,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house50,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house52,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house53,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house54,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house55,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house56,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house57,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house58,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house59,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house60,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house63,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house64,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house65,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house66,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house67,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house69,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house70,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    }, {
+      image: house71,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    }, {
+      image: house73,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house77,
+      title: "6 Marla",
+      location: "Sabz Ali Town, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house78,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house79,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house80,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house81,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house82,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house83,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house84,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house85,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house86,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house87,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house88,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house89,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house90,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house91,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house92,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+    {
+      image: house111,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+
+    {
+      image: house112,
+      title: "6 Marla",
+      location: "Executive Lodges, Peshawar",
+      description: "A luxury residential project",
+      category: "residential" as const,
+      year: 2009,
+    },
+ 
+
   ];
 
   const filters: { label: string; value: ProjectCategory }[] = [
@@ -318,7 +740,8 @@ const Projects = ({ limitProjects = true }: ProjectsProps) => {
           {displayedProjects.map((project, index) => (
             <Card
               key={index}
-              className="overflow-hidden group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-border"
+              className="overflow-hidden group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-border cursor-pointer"
+              onClick={() => setSelectedImage(project.image)}
             >
               <div className="h-64 overflow-hidden">
                 <img
@@ -335,11 +758,34 @@ const Projects = ({ limitProjects = true }: ProjectsProps) => {
                 <p className="text-sm text-primary font-medium mb-2">
                   {project.location}
                 </p>
-                <p className="text-muted-foreground">{project.description}</p>
+                {/* <p className="text-muted-foreground">{project.description}</p> */}
               </CardContent>
             </Card>
           ))}
         </div>
+
+        {/* Image Dialog */}
+        <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+          <DialogContent className="max-w-4xl w-full p-0 overflow-hidden">
+            <DialogHeader className="absolute right-4 top-4 z-10">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full bg-background/80 backdrop-blur-sm"
+                onClick={() => setSelectedImage(null)}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </DialogHeader>
+            {selectedImage && (
+              <img
+                src={selectedImage}
+                alt="Project full view"
+                className="w-full h-auto object-contain"
+              />
+            )}
+          </DialogContent>
+        </Dialog>
 
         {displayedProjects.length === 0 && (
           <div className="text-center py-12">
